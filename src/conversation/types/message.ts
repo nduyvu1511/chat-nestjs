@@ -56,12 +56,12 @@ export interface MessageReplyPopulate {
 
 export type MessagePopulate = Omit<
   Message,
-  'user_id' | 'reply_to' | 'attachment_ids' | 'mention_to' | 'room_id'
+  'user_id' | 'reply_to' | 'attachments' | 'mention_to' | 'room_id'
 > & {
   room_id: string
   user_id: User
   reply_to?: MessageReplyPopulate | undefined
-  attachment_ids: Attachment[]
+  attachments: Attachment[]
   mention_to: User[]
 }
 

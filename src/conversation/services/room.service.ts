@@ -1,4 +1,4 @@
-import { MESSAGES_LIMIT, USERS_LIMIT, WebsocketEmitEvents } from '@common/constant'
+import { MESSAGES_LIMIT, WebsocketEmitEvents } from '@common/constant'
 import { compareTwoObjectId } from '@common/helpers'
 import { ListRes, QueryCommonParams } from '@common/types'
 import { toListResponse } from '@common/utils'
@@ -11,9 +11,7 @@ import {
 import { MessageRepository, RoomRepository } from '@conversation/repositories'
 import { Room, RoomDetailRes, RoomMemberRes } from '@conversation/types'
 import {
-  toLastMessageResponse,
   toMessageUnreadCount,
-  toRoomListResponse,
   toRoomMemberListResponse,
   toRoomOfflineAt,
 } from '@conversation/utils'
@@ -144,7 +142,7 @@ export class RoomService {
       limit: MESSAGES_LIMIT,
       offset: 0,
       user_id: user._id,
-      filter: { room_id: room_id },
+      filter: { room_id: room_id, is_hidden: false },
     })
 
     let name: null | string = room?.name

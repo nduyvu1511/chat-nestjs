@@ -1,4 +1,3 @@
-import { HttpResponseDto } from '@common/dtos'
 import { HttpResponse } from '@common/utils'
 import {
   Body,
@@ -35,20 +34,27 @@ export class AuthController {
     type: LoginResDto,
   })
   async register(@Body() createUserDto: CreateUserDto) {
-    const data = await this.authService.register(
-      plainToClass(CreateUserDto, createUserDto, { excludeExtraneousValues: true })
-    )
-
-    return new HttpResponse(data, 'Đăng ký thành công')
+    try {
+      const data = await this.authService.register(
+        plainToClass(CreateUserDto, createUserDto, { excludeExtraneousValues: true })
+      )
+      return new HttpResponse(data, 'Đăng ký thành công')
+    } catch (error) {
+      throw new HttpException(error?.message, HttpStatus.BAD_REQUEST)
+    }
   }
 
   @Post('login')
   @ApiOkResponse({ type: LoginResDto })
   async login(@Body() loginDto: LoginDto) {
-    const data = await this.authService.login(
-      plainToClass(LoginDto, loginDto, { excludeExtraneousValues: true })
-    )
-    return new HttpResponse(data, 'Đăng nhập thành công')
+    try {
+      const data = await this.authService.login(
+        plainToClass(LoginDto, loginDto, { excludeExtraneousValues: true })
+      )
+      return new HttpResponse(data, 'Đăng nhập thành công')
+    } catch (error) {
+      throw new HttpException(error?.message, HttpStatus.BAD_REQUEST)
+    }
   }
 
   @Get('password')
@@ -57,7 +63,11 @@ export class AuthController {
     type: HasPasswordResDto,
   })
   async checkHasPassword(@Req() req: Request) {
-    return new HttpResponse({ has_password: !!req._user?.password })
+    try {
+      return new HttpResponse({ has_password: !!req._user?.password })
+    } catch (error) {
+      throw new HttpException(error?.message, HttpStatus.BAD_REQUEST)
+    }
   }
 
   @Post('password')

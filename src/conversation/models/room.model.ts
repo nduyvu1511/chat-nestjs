@@ -100,7 +100,7 @@ const RoomSchema = new Schema<
   },
   {
     collection: 'Rooms',
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
   }
 )
 

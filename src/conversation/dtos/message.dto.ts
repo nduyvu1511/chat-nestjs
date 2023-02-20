@@ -1,26 +1,15 @@
 import { AttachmentTypeEnum } from '@attachment/types'
 import { LngLatDto } from '@common/dtos'
 import { OBJECT_ID_REGEX } from '@common/regex'
-import {
-  AuthorMessage,
-  MessageEmotionEnum,
-  MessageEmotionType,
-  MessageReply,
-} from '@conversation/types'
+import { MessageEmotionEnum, MessageEmotionType } from '@conversation/types'
 import { ApiProperty } from '@nestjs/swagger'
 import { UserIdUserNameDto } from '@user/dtos'
 import { Expose, Type } from 'class-transformer'
 import {
-  ArrayMaxSize,
-  ArrayMinSize,
   ArrayNotEmpty,
-  ArrayUnique,
-  isArray,
   IsArray,
   IsBoolean,
   IsDate,
-  IsDefined,
-  IsEmpty,
   IsEnum,
   IsNotEmpty,
   IsNotEmptyObject,
@@ -29,8 +18,6 @@ import {
   IsOptional,
   IsString,
   Matches,
-  MaxLength,
-  MinLength,
   ValidateNested,
 } from 'class-validator'
 

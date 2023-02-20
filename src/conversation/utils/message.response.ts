@@ -35,9 +35,9 @@ export const toMessageResponse = (data: MessagePopulate, user_id: string): Messa
     id: data._id,
     room_id: data.room_id,
     text: data?.text || '',
-    product_id: data?.order_id || null,
+    product_id: data?.product_id || null,
     order_id: data?.order_id || null,
-    attachments: data?.attachment_ids?.length ? toAttachmentListResponse(data?.attachment_ids) : [],
+    attachments: data?.attachments?.length ? toAttachmentListResponse(data?.attachments) : [],
     location: data?.location || null,
     is_author,
     ...toAuthorMessage(data.user_id),
@@ -55,7 +55,7 @@ export const toMessageResponse = (data: MessagePopulate, user_id: string): Messa
 }
 
 export const toMessageListResponse = (data: MessagePopulate[], user_id: string): MessageRes[] => {
-  return data.map((item) => toMessageResponse(item, user_id)).reverse()
+  return data.map((item) => toMessageResponse(item, user_id))
 }
 
 export const toLastMessageResponse = (data: LastMessagePopulate, user_id: string): LastMessage => {

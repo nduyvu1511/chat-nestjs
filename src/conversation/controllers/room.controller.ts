@@ -1,4 +1,4 @@
-import { createMyClass, PaginationDto } from '@common/dtos'
+import { PaginationDto } from '@common/dtos'
 import { HttpResponse } from '@common/utils'
 import {
   CreateGroupChatDto,

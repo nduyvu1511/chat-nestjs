@@ -15,10 +15,10 @@ export abstract class BaseDto {
   _id: string
 
   @Expose()
-  createdAt: string
+  created_at: string
 
   @Expose()
-  updatedAt: string
+  updated_at: string
 
   static plainToClass<T>(cls: ClassConstructor<T>, plain: T, options?: ClassTransformOptions) {
     return plainToInstance(cls, plain, { excludeExtraneousValues: true, ...options })

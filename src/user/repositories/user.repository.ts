@@ -136,6 +136,10 @@ export class UserRepository extends BaseRepository<UserDocument> {
     return this.userModel.findOne({ user_id })
   }
 
+  async getUserByPhone(phone): Promise<User> {
+    return this.userModel.findOne({ phone })
+  }
+
   async setDeviceId(_id: string, device_id: string): Promise<boolean> {
     return this.userModel.findOneAndUpdate({ _id }, { $set: { device_id } })
   }

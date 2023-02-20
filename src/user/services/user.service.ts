@@ -74,7 +74,7 @@ export class UserService {
   }
 
   async findByLogin({ phone, device_id, password }: LoginDto) {
-    const user = await this.userRepository.findOne({ phone })
+    const user = await this.userRepository.getUserByPhone(phone)
     if (!user) {
       throw new HttpException('User not found', HttpStatus.UNAUTHORIZED)
     }

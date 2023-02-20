@@ -115,7 +115,7 @@ const MessageSchema = new Schema<Message>(
   },
   {
     collection: 'Messages',
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
   }
 )
 

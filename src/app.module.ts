@@ -5,17 +5,19 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
 import { NotificationModule } from '@notification/notification.module'
+import { PostModule } from '@post/post.module'
 import { UserModule } from '@user/user.module'
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    UserModule,
     MongooseModule.forRoot(process.env.MONGODB_URL),
+    UserModule,
     conversationModule,
     AttachmentModule,
     GatewayModule,
     NotificationModule,
+    PostModule,
   ],
   controllers: [],
   providers: [],

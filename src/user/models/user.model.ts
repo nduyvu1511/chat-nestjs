@@ -61,20 +61,12 @@ const UserSchema = new Schema<User>(
       type: Number,
       default: 0,
     },
-    created_at: {
-      type: Date,
-      default: Date.now,
-    },
-    updated_at: {
-      type: Date,
-      default: Date.now,
-    },
     offline_at: {
       type: Date,
       default: null,
     },
   },
-  { collection: 'Users', timestamps: true }
+  { collection: 'Users', timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }
 )
 
 export { UserSchema }

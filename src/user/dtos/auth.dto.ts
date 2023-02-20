@@ -2,7 +2,7 @@ import { PHONE_REGEX } from '@common/regex'
 import { ApiProperty } from '@nestjs/swagger'
 import { UserRole } from '@user/types'
 import { Expose } from 'class-transformer'
-import { IsEnum, IsNotEmpty, IsNumber, Matches, MinLength } from 'class-validator'
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, Matches, MinLength } from 'class-validator'
 
 export class LoginDto {
   @ApiProperty()
@@ -18,8 +18,9 @@ export class LoginDto {
   password: string
 
   @ApiProperty()
+  @IsOptional()
   @Expose()
-  device_id: string
+  device_id?: string
 }
 
 export class RefreshTokenDto {
